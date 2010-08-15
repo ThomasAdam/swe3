@@ -1,0 +1,23 @@
+Description: Fix invocation of whois for Debian.
+Author: Tim Retout <diocles@debian.org>
+
+--- a/httpd/cgi-bin/ipinfo.cgi
++++ b/httpd/cgi-bin/ipinfo.cgi
+@@ -75,7 +75,7 @@
+         			if (!$hostname) { $hostname = $tr{'lookup failed'}; }
+ 				&openbox("$addr ($hostname)");
+ 				print "<PRE>\n";
+-				system('/usr/bin/whois', '--nocgi', $addr);
++				system('/usr/bin/whois', $addr);
+ 				print "</PRE>\n";
+ 				&closebox();
+ 			}
+@@ -100,7 +100,7 @@
+ 			if (!$hostname) { $hostname = $tr{'lookup failed'}; }
+ 			&openbox("$addr ($hostname)");
+ 			print "<div style='height: 140px; width: 400px; overflow: auto;'><pre style='font-size: 9px;'>";
+-			system('/usr/bin/whois', '--nocgi', $addr);
++			system('/usr/bin/whois', $addr);
+ 			print "</pre></div>";
+ 			&closebox();
+ 		}
