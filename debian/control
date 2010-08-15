@@ -7,7 +7,7 @@ Standards-Version: 3.9.1
 Homepage: http://www.smoothwall.org/
 
 Package: swe3
-Architecture: any
+Architecture: all
 Depends: ${misc:Depends}, ${perl:Depends}, swe3-smoothd
 Description: web interface for firewall administration
  This is the web interface from SmoothWall Express 3.0, modified to
