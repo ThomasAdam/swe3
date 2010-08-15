@@ -1,0 +1,7 @@
+#!/usr/bin/make -f
+
+%:
+	dh $@
+
+get-orig-source:
+	debian/get-orig-source.sh

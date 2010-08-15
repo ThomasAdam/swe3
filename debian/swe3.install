@@ -1,0 +1,2 @@
+httpd/html/ /usr/share/swe3/
+httpd/cgi-bin/ /usr/share/swe3/html/

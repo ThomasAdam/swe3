@@ -1,0 +1,17 @@
+Source: swe3
+Section: admin
+Priority: optional
+Maintainer: Tim Retout <diocles@debian.org>
+Build-Depends: debhelper (>= 8)
+Standards-Version: 3.9.1
+Homepage: http://www.smoothwall.org/
+
+Package: swe3
+Architecture: any
+Depends: ${misc:Depends}, ${perl:Depends}, swe3-smoothd
+Description: web interface for firewall administration
+ This is the web interface from SmoothWall Express 3.0, modified to
+ run on a Debian system.  It lets you administer a simple firewall.
+ .
+ Currently this is in a bleeding-edge development state, so is unlikely
+ to be a good option for most users.
