@@ -1,0 +1,17 @@
+Description: Fix ping and traceroute paths for Debian.
+Author: Tim Retout <diocles@debian.org>
+
+--- a/httpd/cgi-bin/iptools.cgi
++++ b/httpd/cgi-bin/iptools.cgi
+@@ -83,9 +83,9 @@
+ 			&openbox("${addr} (${hostname})");
+ 			print "<PRE>\n";
+ 			if ($cgiparams{'TOOL'} eq 'PING') {
+-				system('/usr/bin/ping', '-n', '-c', '5', $addr); }
++				system('/bin/ping', '-n', '-c', '5', $addr); }
+ 			elsif ($cgiparams{'TOOL'} eq 'TRACEROUTE') {
+-				system('/bin/traceroute', '-n', $addr); }
++				system('/usr/bin/traceroute', '-n', $addr); }
+ 			print "</PRE>\n";
+ 			&closebox();
+ 		}
