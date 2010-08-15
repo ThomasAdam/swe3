@@ -6,7 +6,7 @@
 #
 # (c) The SmoothWall Team
 
-use lib "/usr/lib/smoothwall";
+use lib "/usr/share/swe3/perl";
 use header qw( :standard );
 
 $graphcriticalcolour = "#ff0000";
@@ -255,7 +255,7 @@ print "</table>\n";
 &closebox();
 
 my %ethersettings;
-&readhash(  "/var/smoothwall/ethernet/settings", \%ethersettings );
+&readhash(  "/var/lib/swe3/smoothwall/ethernet/settings", \%ethersettings );
 my %devices;
 $devices{$ethersettings{'GREEN_DEV'}} = $tr{'green'};
 $devices{$ethersettings{'ORANGE_DEV'}} = $tr{'orange'};

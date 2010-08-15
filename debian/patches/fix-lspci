@@ -1,0 +1,14 @@
+Description: Fix lspci path for Debian.
+Author: Tim Retout <diocles@debian.org>
+
+--- a/httpd/cgi-bin/advstatus.cgi
++++ b/httpd/cgi-bin/advstatus.cgi
+@@ -388,7 +388,7 @@
+ &closebox();
+ &openbox($tr{'adv hardware'});
+ 
+-my @lspci = split /\n/, &pipeopen( '/usr/sbin/lspci' );
++my @lspci = split /\n/, &pipeopen( '/usr/bin/lspci' );
+ 
+ print qq{
+ 	<br/>
