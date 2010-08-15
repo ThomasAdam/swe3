@@ -1,0 +1,588 @@
+--- a/httpd/cgi-bin/advnet.cgi
++++ b/httpd/cgi-bin/advnet.cgi
+@@ -6,7 +6,7 @@
+ #
+ # (c) SmoothWall Ltd, 2002-2003
+ 
+-use lib "/usr/lib/smoothwall";
++use lib "/usr/share/swe3/perl";
+ use header qw( :standard );
+ use smoothd qw( message );
+ 
+--- a/httpd/cgi-bin/advstatus.cgi
++++ b/httpd/cgi-bin/advstatus.cgi
+@@ -6,7 +6,7 @@
+ #
+ # (c) The SmoothWall Team
+ 
+-use lib "/usr/lib/smoothwall";
++use lib "/usr/share/swe3/perl";
+ use header qw( :standard );
+ 
+ $graphcriticalcolour = "#ff0000";
+--- a/httpd/cgi-bin/alcateladslfw.cgi
++++ b/httpd/cgi-bin/alcateladslfw.cgi
+@@ -6,7 +6,7 @@
+ #
+ # (c) The SmoothWall Team
+ 
+-use lib "/usr/lib/smoothwall";
++use lib "/usr/share/swe3/perl";
+ use header qw( :standard );
+ use smoothd qw( message );
+ 
+--- a/httpd/cgi-bin/backup.img
++++ b/httpd/cgi-bin/backup.img
+@@ -6,7 +6,7 @@
+ #
+ # (c) The SmoothWall Team
+ 
+-use lib "/usr/lib/smoothwall";
++use lib "/usr/share/swe3/perl";
+ use header qw( :standard );
+ 
+ my @temp;
+--- a/httpd/cgi-bin/bandwidthbars.cgi
++++ b/httpd/cgi-bin/bandwidthbars.cgi
+@@ -6,7 +6,7 @@
+ #
+ # (c) The SmoothWall Team
+ 
+-use lib "/usr/lib/smoothwall";
++use lib "/usr/share/swe3/perl";
+ use header qw( :standard );
+ 
+ my %netsettings;
+--- a/httpd/cgi-bin/changepw.cgi
++++ b/httpd/cgi-bin/changepw.cgi
+@@ -6,7 +6,7 @@
+ #
+ # (c) The SmoothWall Team
+ 
+-use lib "/usr/lib/smoothwall";
++use lib "/usr/share/swe3/perl";
+ use header qw( :standard );
+ use smoothtype qw( :standard );
+ 
+--- a/httpd/cgi-bin/ddns.cgi
++++ b/httpd/cgi-bin/ddns.cgi
+@@ -6,7 +6,7 @@
+ #
+ # (c) The SmoothWall Team
+ 
+-use lib "/usr/lib/smoothwall";
++use lib "/usr/share/swe3/perl";
+ use header qw( :standard );
+ use smoothtype qw(:standard);
+ 
+--- a/httpd/cgi-bin/dhcp.cgi
++++ b/httpd/cgi-bin/dhcp.cgi
+@@ -6,7 +6,7 @@
+ #
+ # (c) The SmoothWall Team
+ 
+-use lib "/usr/lib/smoothwall";
++use lib "/usr/share/swe3/perl";
+ use header qw( :standard );
+ use smoothd qw( message );
+ use smoothtype qw( :standard );
+--- a/httpd/cgi-bin/dial.cgi
++++ b/httpd/cgi-bin/dial.cgi
+@@ -6,7 +6,7 @@
+ #
+ # (c) The SmoothWall Team
+ 
+-use lib "/usr/lib/smoothwall";
++use lib "/usr/share/swe3/perl";
+ use header qw( :standard );
+ use smoothd qw( message );
+ 
+--- a/httpd/cgi-bin/dmzholes.cgi
++++ b/httpd/cgi-bin/dmzholes.cgi
+@@ -6,7 +6,7 @@
+ #
+ # (c) The SmoothWall Team
+ 
+-use lib "/usr/lib/smoothwall";
++use lib "/usr/share/swe3/perl";
+ use header qw( :standard );
+ use smoothtype qw( :standard );
+ use smoothd qw( message );
+--- a/httpd/cgi-bin/extensions.cgi
++++ b/httpd/cgi-bin/extensions.cgi
+@@ -8,7 +8,7 @@
+ 
+ use IO::Socket;
+ 
+-use lib "/usr/lib/smoothwall";
++use lib "/usr/share/swe3/perl";
+ use header qw( :standard );
+ use smoothnet qw( :standard );
+ 
+--- a/httpd/cgi-bin/graphs.cgi
++++ b/httpd/cgi-bin/graphs.cgi
+@@ -10,7 +10,7 @@
+ # (c) The SmoothWall Team
+ # rrdtool.cgi
+ 
+-use lib "/usr/lib/smoothwall";
++use lib "/usr/share/swe3/perl";
+ use header qw( :standard );
+ use POSIX qw(strftime);
+ 
+--- a/httpd/cgi-bin/help.cgi
++++ b/httpd/cgi-bin/help.cgi
+@@ -6,15 +6,15 @@
+ #
+ # (c) The SmoothWall Team
+ 
+-use lib "/usr/lib/smoothwall";
++use lib "/usr/share/swe3/perl";
+ use header qw( :standard );
+ 
+ # load the glossary of terms.
+ # this is similar to the TR hash, but only required here, and therefore not
+ # included in it, (it could do with replacing anyhow)
+ 
+-require "/usr/lib/smoothwall/langs/glossary.base.pl";
+-require "/usr/lib/smoothwall/langs/glossary.${language}.pl";
++require "/usr/share/swe3/perl/langs/glossary.base.pl";
++require "/usr/share/swe3/perl/langs/glossary.${language}.pl";
+ 
+ my $needhelpwith = $ENV{'QUERY_STRING'};
+ 
+--- a/httpd/cgi-bin/hosts.cgi
++++ b/httpd/cgi-bin/hosts.cgi
+@@ -6,7 +6,7 @@
+ #
+ # (c) The SmoothWall Team
+ 
+-use lib "/usr/lib/smoothwall";
++use lib "/usr/share/swe3/perl";
+ use header qw( :standard );
+ use smoothd qw( message );
+ use smoothtype qw(:standard);
+--- a/httpd/cgi-bin/ids.cgi
++++ b/httpd/cgi-bin/ids.cgi
+@@ -6,7 +6,7 @@
+ #
+ # (c) The SmoothWall Team
+ 
+-use lib "/usr/lib/smoothwall";
++use lib "/usr/share/swe3/perl";
+ use header qw( :standard );
+ use smoothd qw( message );
+ use smoothtype qw( :standard );
+@@ -160,7 +160,7 @@
+ 	
+ if ($snortsettings{'ACTION'} eq $tr{'save and update rules'} and !$errormessage)
+ {
+-	my $origsnortversion = &readvalue('/usr/lib/smoothwall/snortversion');
++	my $origsnortversion = &readvalue('/usr/share/swe3/perl/snortversion');
+ 
+ 	my $snortversion = $origsnortversion;
+ 	
+@@ -276,7 +276,7 @@
+ 		open(STDERR, ">&STDOUT");
+ 
+ 		exec('/usr/bin/oinkmaster.pl', '-v', '-C',
+-		'/usr/lib/smoothwall/oinkmaster.conf', '-o', 'rules', '-u', $url);
++		'/usr/share/swe3/perl/oinkmaster.conf', '-o', 'rules', '-u', $url);
+ 	}
+ 
+ 	chdir $curdir;
+--- a/httpd/cgi-bin/im.cgi
++++ b/httpd/cgi-bin/im.cgi
+@@ -6,7 +6,7 @@
+ #
+ # (c) The SmoothWall Team
+ 
+-use lib "/usr/lib/smoothwall";
++use lib "/usr/share/swe3/perl";
+ use header qw( :standard );
+ use smoothd qw( message );
+ 
+--- a/httpd/cgi-bin/index.cgi
++++ b/httpd/cgi-bin/index.cgi
+@@ -6,7 +6,7 @@
+ #
+ # (c) The SmoothWall Team
+ 
+-use lib "/usr/lib/smoothwall";
++use lib "/usr/share/swe3/perl";
+ use header qw( :standard );
+ use smoothnet qw( checkmd5 );
+ 
+--- a/httpd/cgi-bin/interfaces.cgi
++++ b/httpd/cgi-bin/interfaces.cgi
+@@ -6,7 +6,7 @@
+ #
+ # (c) The SmoothWall Team
+ 
+-use lib "/usr/lib/smoothwall";
++use lib "/usr/share/swe3/perl";
+ use header qw(:standard);
+ use smoothtype qw(:standard);
+ use smoothd qw(message);
+--- a/httpd/cgi-bin/ipblock.cgi
++++ b/httpd/cgi-bin/ipblock.cgi
+@@ -7,7 +7,7 @@
+ #
+ # (c) SmoothWall Ltd 2003
+ 
+-use lib "/usr/lib/smoothwall";
++use lib "/usr/share/swe3/perl";
+ use header qw( :standard );
+ use smoothd qw( message );
+ use smoothtype qw( :standard );
+--- a/httpd/cgi-bin/ipinfo.cgi
++++ b/httpd/cgi-bin/ipinfo.cgi
+@@ -6,7 +6,7 @@
+ #
+ # (c) The SmoothWall Team
+ 
+-use lib "/usr/lib/smoothwall";
++use lib "/usr/share/swe3/perl";
+ use header qw( :standard );
+ 
+ use Socket;
+--- a/httpd/cgi-bin/iptools.cgi
++++ b/httpd/cgi-bin/iptools.cgi
+@@ -6,7 +6,7 @@
+ #
+ # (c) SmoothWall Ltd, 2002
+ 
+-use lib "/usr/lib/smoothwall";
++use lib "/usr/share/swe3/perl";
+ use header qw( :standard );
+ 
+ use Socket;
+--- a/httpd/cgi-bin/logs.cgi/firewalllog.dat
++++ b/httpd/cgi-bin/logs.cgi/firewalllog.dat
+@@ -48,7 +48,7 @@
+ 
+ # get some configuration options from the page request, alternatively, use defaults
+ 
+-use lib "/usr/lib/smoothwall";
++use lib "/usr/share/swe3/perl";
+ use header qw( :standard );
+ 
+ $viewsize = $viewsize / 2;
+--- a/httpd/cgi-bin/logs.cgi/ids.dat
++++ b/httpd/cgi-bin/logs.cgi/ids.dat
+@@ -6,7 +6,7 @@
+ #
+ # (c) The SmoothWall Team
+ 
+-use lib "/usr/lib/smoothwall";
++use lib "/usr/share/swe3/perl";
+ use header qw( :standard );
+ 
+ my %cgiparams;
+--- a/httpd/cgi-bin/logs.cgi/imviewer.cgi
++++ b/httpd/cgi-bin/logs.cgi/imviewer.cgi
+@@ -1,6 +1,6 @@
+ #!/usr/bin/perl
+ 
+-use lib "/usr/lib/smoothwall/";
++use lib "/usr/share/swe3/perl/";
+ use header qw( :standard );
+ use POSIX qw(strftime);
+ 
+--- a/httpd/cgi-bin/logs.cgi/log.dat
++++ b/httpd/cgi-bin/logs.cgi/log.dat
+@@ -6,7 +6,7 @@
+ #
+ # (c) The SmoothWall Team
+ 
+-use lib "/usr/lib/smoothwall";
++use lib "/usr/share/swe3/perl";
+ use header qw( :standard );
+ 
+ my %cgiparams;
+--- a/httpd/cgi-bin/logs.cgi/pop3log.dat
++++ b/httpd/cgi-bin/logs.cgi/pop3log.dat
+@@ -6,7 +6,7 @@
+ #
+ # (c) The SmoothWall Team
+ 
+-use lib "/usr/lib/smoothwall";
++use lib "/usr/share/swe3/perl";
+ use header qw( :standard );
+ use smoothtype qw( :standard );
+ 
+--- a/httpd/cgi-bin/logs.cgi/proxylog.dat
++++ b/httpd/cgi-bin/logs.cgi/proxylog.dat
+@@ -6,7 +6,7 @@
+ #
+ # (c) The SmoothWall Team
+ 
+-use lib "/usr/lib/smoothwall";
++use lib "/usr/share/swe3/perl";
+ use header qw( :standard );
+ use Time::Local qw( timelocal );
+ 
+--- a/httpd/cgi-bin/modem.cgi
++++ b/httpd/cgi-bin/modem.cgi
+@@ -6,7 +6,7 @@
+ #
+ # (c) The SmoothWall Team
+ 
+-use lib "/usr/lib/smoothwall";
++use lib "/usr/share/swe3/perl";
+ use header qw( :standard );
+ use smoothtype qw( :standard );
+ 
+--- a/httpd/cgi-bin/outgoing.cgi
++++ b/httpd/cgi-bin/outgoing.cgi
+@@ -6,7 +6,7 @@
+ #
+ # (c) The SmoothWall Team
+ 
+-use lib "/usr/lib/smoothwall";
++use lib "/usr/share/swe3/perl";
+ use header qw( :standard );
+ use smoothd qw( message );
+ use smoothtype qw( :standard );
+--- a/httpd/cgi-bin/p3scan.cgi
++++ b/httpd/cgi-bin/p3scan.cgi
+@@ -6,7 +6,7 @@
+ #
+ # (c) The SmoothWall Team
+ 
+-use lib "/usr/lib/smoothwall";
++use lib "/usr/share/swe3/perl";
+ use header qw( :standard );
+ use smoothd qw( message );
+ 
+--- a/httpd/cgi-bin/portfw.cgi
++++ b/httpd/cgi-bin/portfw.cgi
+@@ -6,7 +6,7 @@
+ #
+ # (c) The SmoothWall Team
+ 
+-use lib "/usr/lib/smoothwall";
++use lib "/usr/share/swe3/perl";
+ use header qw( :standard );
+ use smoothd qw( message );
+ use smoothtype qw( :standard );
+--- a/httpd/cgi-bin/pppsetup.cgi
++++ b/httpd/cgi-bin/pppsetup.cgi
+@@ -6,7 +6,7 @@
+ #
+ # (c) The SmoothWall Team
+ 
+-use lib "/usr/lib/smoothwall";
++use lib "/usr/share/swe3/perl";
+ use header qw( :standard );
+ use smoothtype qw( :standard );
+ 
+--- a/httpd/cgi-bin/preferences.cgi
++++ b/httpd/cgi-bin/preferences.cgi
+@@ -6,7 +6,7 @@
+ #
+ # (c) The SmoothWall Team
+ 
+-use lib "/usr/lib/smoothwall";
++use lib "/usr/share/swe3/perl";
+ use header qw( :standard );
+ 
+ my %cgiparams; 
+--- a/httpd/cgi-bin/proxy.cgi
++++ b/httpd/cgi-bin/proxy.cgi
+@@ -6,7 +6,7 @@
+ #
+ # (c) The SmoothWall Team
+ 
+-use lib "/usr/lib/smoothwall";
++use lib "/usr/share/swe3/perl";
+ use header qw( :standard );
+ use smoothd qw( message );
+ 
+--- a/httpd/cgi-bin/register.cgi
++++ b/httpd/cgi-bin/register.cgi
+@@ -6,7 +6,7 @@
+ #
+ # (c) The SmoothWall Team
+ 
+-use lib "/usr/lib/smoothwall";
++use lib "/usr/share/swe3/perl";
+ use header qw( :standard );
+ use IO::Socket;
+ 
+--- a/httpd/cgi-bin/remote.cgi
++++ b/httpd/cgi-bin/remote.cgi
+@@ -6,7 +6,7 @@
+ #
+ # (c) The SmoothWall Team
+ 
+-use lib "/usr/lib/smoothwall";
++use lib "/usr/share/swe3/perl";
+ use header qw( :standard );
+ use smoothd qw( message );
+ 
+--- a/httpd/cgi-bin/shell.cgi
++++ b/httpd/cgi-bin/shell.cgi
+@@ -6,7 +6,7 @@
+ #
+ # (c) The SmoothWall Team
+ 
+-use lib "/usr/lib/smoothwall";
++use lib "/usr/share/swe3/perl";
+ use header qw( :standard );
+ 
+ &showhttpheaders();
+--- a/httpd/cgi-bin/shutdown.cgi
++++ b/httpd/cgi-bin/shutdown.cgi
+@@ -6,7 +6,7 @@
+ #
+ # (c) The SmoothWall Team
+ 
+-use lib "/usr/lib/smoothwall";
++use lib "/usr/share/swe3/perl";
+ use header qw( :standard );
+ use smoothd qw( message );
+ 
+--- a/httpd/cgi-bin/sipproxy.cgi
++++ b/httpd/cgi-bin/sipproxy.cgi
+@@ -4,7 +4,7 @@
+ #
+ # (c) SmoothWall Ltd, 2005
+ 
+-use lib "/usr/lib/smoothwall";
++use lib "/usr/share/swe3/perl";
+ use header qw( :standard );
+ use smoothd qw( message );
+ 
+--- a/httpd/cgi-bin/status.cgi
++++ b/httpd/cgi-bin/status.cgi
+@@ -6,7 +6,7 @@
+ #
+ # (c) The SmoothWall Team
+ 
+-use lib "/usr/lib/smoothwall";
++use lib "/usr/share/swe3/perl";
+ use header qw( :standard );
+ 
+ my %cgiparams;
+@@ -26,11 +26,11 @@
+ my %servicenames;
+ my %coreservices;
+ 
+-opendir(DIR, "/usr/lib/smoothwall/services/");
++opendir(DIR, "/usr/share/swe3/perl/services/");
+ my @files = grep {!/\./} readdir(DIR);
+ 
+ foreach my $file ( sort @files ){
+-	open ( my $line, "</usr/lib/smoothwall/services/$file" ) or next;
++	open ( my $line, "</usr/share/swe3/perl/services/$file" ) or next;
+ 	my ( $name, $rel ) = split /,/, <$line>;
+ 	close $line;
+ 	chomp $name;
+--- a/httpd/cgi-bin/time.cgi
++++ b/httpd/cgi-bin/time.cgi
+@@ -6,7 +6,7 @@
+ #
+ # (c) SmoothWall Ltd 2002, 2003
+ 
+-use lib "/usr/lib/smoothwall";
++use lib "/usr/share/swe3/perl";
+ use header qw( :standard );
+ use smoothd qw( message );
+ use smoothtype qw( :standard );
+--- a/httpd/cgi-bin/timedaccess.cgi
++++ b/httpd/cgi-bin/timedaccess.cgi
+@@ -6,7 +6,7 @@
+ #
+ # (c) The SmoothWall Team
+ 
+-use lib "/usr/lib/smoothwall";
++use lib "/usr/share/swe3/perl";
+ use header qw( :standard );
+ use smoothd qw( message );
+ 
+--- a/httpd/cgi-bin/traffic.cgi
++++ b/httpd/cgi-bin/traffic.cgi
+@@ -7,7 +7,7 @@
+ # (c) The SmoothWall Team
+ # Martin Houston <martin.houston@smoothwall.net>
+ 
+-use lib "/usr/lib/smoothwall";
++use lib "/usr/share/swe3/perl";
+ use header qw(:standard);
+ use smoothtype qw(:standard);
+ use smoothd qw(message);
+--- a/httpd/cgi-bin/trafficmonitor.cgi
++++ b/httpd/cgi-bin/trafficmonitor.cgi
+@@ -6,7 +6,7 @@
+ #
+ # (c) The SmoothWall Team
+ 
+-use lib "/usr/lib/smoothwall";
++use lib "/usr/share/swe3/perl";
+ use header qw( :standard );
+ 
+ my %netsettings;
+--- a/httpd/cgi-bin/trafficstats.cgi
++++ b/httpd/cgi-bin/trafficstats.cgi
+@@ -1,6 +1,6 @@
+ #!/usr/bin/perl
+ my $ADDRS_TO_SHOW = 5;
+-use lib "/usr/lib/smoothwall";
++use lib "/usr/share/swe3/perl";
+ # use header qw(:standard);
+ print "Pragma: no-cache\n";
+ print "Cache-control: no-cache\n";
+--- a/httpd/cgi-bin/updates.cgi
++++ b/httpd/cgi-bin/updates.cgi
+@@ -8,7 +8,7 @@
+ 
+ use IO::Socket;
+ 
+-use lib "/usr/lib/smoothwall";
++use lib "/usr/share/swe3/perl";
+ use header qw( :standard );
+ use update qw( :standard );
+ use smoothnet qw( :standard );
+@@ -351,7 +351,7 @@
+ 
+ if ($uploadsettings{'ACTION'} eq "$tr{'update'}" )
+ {
+-	use lib "/usr/lib/smoothwall/";
++	use lib "/usr/share/swe3/perl/";
+ 
+ 	print STDERR "Performing Update\n";
+ 
+--- a/httpd/cgi-bin/vpn.cgi/vpnconfig.dat
++++ b/httpd/cgi-bin/vpn.cgi/vpnconfig.dat
+@@ -6,7 +6,7 @@
+ #
+ # (c) The SmoothWall Team
+ 
+-use lib "/usr/lib/smoothwall";
++use lib "/usr/share/swe3/perl";
+ use header qw( :standard );
+ use smoothtype qw(:standard);
+ 
+--- a/httpd/cgi-bin/vpnmain.cgi
++++ b/httpd/cgi-bin/vpnmain.cgi
+@@ -6,7 +6,7 @@
+ #
+ # (c) The SmoothWall Team
+ 
+-use lib "/usr/lib/smoothwall";
++use lib "/usr/share/swe3/perl";
+ use header qw( :standard );
+ use smoothd qw( message );
+ use smoothtype qw( :standard );
+--- a/httpd/cgi-bin/xtaccess.cgi
++++ b/httpd/cgi-bin/xtaccess.cgi
+@@ -6,7 +6,7 @@
+ #
+ # (c) The SmoothWall Team
+ 
+-use lib "/usr/lib/smoothwall";
++use lib "/usr/share/swe3/perl";
+ use header qw( :standard );
+ use smoothd qw( message );
+ use smoothtype qw( :standard );
