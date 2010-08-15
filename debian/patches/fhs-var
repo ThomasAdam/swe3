@@ -1,0 +1,139 @@
+--- a/httpd/cgi-bin/advstatus.cgi
++++ b/httpd/cgi-bin/advstatus.cgi
+@@ -255,7 +255,7 @@
+ &closebox();
+ 
+ my %ethersettings;
+-&readhash(  "/var/smoothwall/ethernet/settings", \%ethersettings );
++&readhash(  "/var/lib/swe3/smoothwall/ethernet/settings", \%ethersettings );
+ my %devices;
+ $devices{$ethersettings{'GREEN_DEV'}} = $tr{'green'};
+ $devices{$ethersettings{'ORANGE_DEV'}} = $tr{'orange'};
+--- a/httpd/cgi-bin/extensions.cgi
++++ b/httpd/cgi-bin/extensions.cgi
+@@ -26,7 +26,7 @@
+ 
+ my %extensions;
+ 
+-if ( open ( my $line, "</var/smoothwall/extensions/installed" )){
++if ( open ( my $line, "</var/lib/swe3/smoothwall/extensions/installed" )){
+ 	while ( my $details = <$line> ){
+ 		chomp $details;
+ 		my ( $name, $version, $md5, $icon, $sample, $link, $download, $file, $description ) = ( $details =~ /([^\|]*)\|([^\|]*)\|([^\|]*)\|([^\|]*)\|([^\|]*)\|([^\|]*)\|([^\|]*)\|([^\|]*)\|(.*)/ );
+@@ -45,7 +45,7 @@
+ if (defined $uploadsettings{'download'} and $uploadsettings{'download'} eq "download"){
+ 	# find this patch to get some additional details for it.
+ 
+-	if ( open ( my $line, "</var/smoothwall/extensions/available" )){
++	if ( open ( my $line, "</var/lib/swe3/smoothwall/extensions/available" )){
+ 		while ( my $details = <$line> ){
+ 			chomp $details;
+ 			my ( $name, $version, $md5, $icon, $sample, $link, $download, $file, $description ) = ( $details =~ /([^\|]*)\|([^\|]*)\|([^\|]*)\|([^\|]*)\|([^\|]*)\|([^\|]*)\|([^\|]*)\|([^\|]*)\|(.*)/ );
+@@ -90,7 +90,7 @@
+ 
+ print "<strong>$tr{'available extensions'}</strong><br/>\n";
+ 
+-if ( open ( my $line, "</var/smoothwall/extensions/available" )){
++if ( open ( my $line, "</var/lib/swe3/smoothwall/extensions/available" )){
+ 
+ 	# are we connected to the internet ?  (this has a bearing on the icons
+ 	# we display
+--- a/httpd/cgi-bin/index.cgi
++++ b/httpd/cgi-bin/index.cgi
+@@ -137,7 +137,7 @@
+ &alertbox($errormessage);
+ 
+ my %ownership;
+-&readhash( "/var/smoothwall/main/ownership", \%ownership );
++&readhash( "/var/lib/swe3/smoothwall/main/ownership", \%ownership );
+ 
+ if ( not defined $ownership{'ADDED_TO_X3'} or $ownership{'ADDED_TO_X3'} eq "0" ){
+ 	&openbox();
+@@ -335,14 +335,14 @@
+ 	print "<td style='vertical-align: top;'>\n";
+ 	print "<table style='width: 100%; border-collapse: collapse;'>";
+ 
+-	if ( open ( $iface_file, "</var/smoothwall/red/local-ipaddress" )){
++	if ( open ( $iface_file, "</var/lib/swe3/smoothwall/red/local-ipaddress" )){
+ 		my $ip = <$iface_file>;
+ 		chomp $ip;
+ 		print "<tr><td><strong>Local:</strong></td><td>$ip</td></tr>";
+ 		close $iface_file;
+ 	}
+ 
+-	if ( open ( $iface_file, "</var/smoothwall/red/remote-ipaddress" )){
++	if ( open ( $iface_file, "</var/lib/swe3/smoothwall/red/remote-ipaddress" )){
+ 		my $ip = <$iface_file>;
+ 		chomp $ip;
+ 		print "<tr><td><strong>Remote:</strong></td><td>$ip</td></tr>";
+@@ -350,7 +350,7 @@
+ 	}
+ 
+ 
+-	if ( open ( $iface_file, "</var/smoothwall/red/iface" )){
++	if ( open ( $iface_file, "</var/lib/swe3/smoothwall/red/iface" )){
+ 		my $iface = <$iface_file>;
+ 		chomp $iface;
+ 		close $iface_file;
+@@ -421,7 +421,7 @@
+ 
+ 	# we even have a preview graph thingy
+ 
+-	if (-e '/var/smoothwall/red/active' && -e '/httpd/html/rrdtool/red-hour_preview.png' ){
++	if (-e '/var/lib/swe3/smoothwall/red/active' && -e '/httpd/html/rrdtool/red-hour_preview.png' ){
+ 		print "<td>&nbsp;</td><td style='vertical-align: top;'><img src='/rrdtool/red-day_preview.png' alt='traffic'></td>\n";
+ 	}
+ }
+--- a/httpd/cgi-bin/register.cgi
++++ b/httpd/cgi-bin/register.cgi
+@@ -11,7 +11,7 @@
+ use IO::Socket;
+ 
+ my %ownership;
+-&readhash( "/var/smoothwall/main/ownership", \%ownership );
++&readhash( "/var/lib/swe3/smoothwall/main/ownership", \%ownership );
+ 
+ my (%settings,$errormessage);
+ &getcgihash(\%settings);
+@@ -19,10 +19,10 @@
+ my $sysid = &getsystemid();
+ 
+ if ( defined $settings{'ACTION'} and $settings{'ACTION'} eq $tr{'get system id'} ){
+-	if ( -e "/var/smoothwall/notregistered" ) {
++	if ( -e "/var/lib/swe3/smoothwall/notregistered" ) {
+         	system( '/usr/bin/smoothwall/machine_reg.pl');
+ 		if ( $? eq 0 ){
+-                	unlink "/var/smoothwall/notregistered";
++                	unlink "/var/lib/swe3/smoothwall/notregistered";
+ 		} else {
+                		# Register: Failed :(
+                	}
+@@ -50,7 +50,7 @@
+ 	my ( $settings ) = @_;
+ 	
+ 	$ownership{ 'ADDED_TO_X3' } = -1;
+-	&writehash( "/var/smoothwall/main/ownership", \%ownership );
++	&writehash( "/var/lib/swe3/smoothwall/main/ownership", \%ownership );
+ }
+ 
+ sub register_page
+@@ -97,7 +97,7 @@
+ END
+ ;
+ 
+-	if ( (-e "/var/smoothwall/notregistered" or ( not defined $ownership{'ID'} or $ownership{'ID'} eq "" )) and -e "/var/smoothwall/red/active"){
++	if ( (-e "/var/lib/swe3/smoothwall/notregistered" or ( not defined $ownership{'ID'} or $ownership{'ID'} eq "" )) and -e "/var/smoothwall/red/active"){
+ 		print qq{
+ 			<div style='width: 100%; text-align: justify;'>$tr{'missing installation id'}<br/><br/></div>
+ 			<div style='width: 100%; text-align: center;'><form method='post'><input type='submit' name='ACTION' value='$tr{'get system id'}'></form></div>
+--- a/httpd/cgi-bin/trafficmonitor.cgi
++++ b/httpd/cgi-bin/trafficmonitor.cgi
+@@ -22,7 +22,7 @@
+ # calculate some name translations 
+ 
+ my %ethersettings;
+-&readhash(  "/var/smoothwall/ethernet/settings", \%ethersettings );
++&readhash(  "/var/lib/swe3/smoothwall/ethernet/settings", \%ethersettings );
+ 
+ my $etherline = "var translations = new Array(); ";
+ 
