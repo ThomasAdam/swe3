@@ -1,0 +1,9 @@
+Description: Always use English for the web interface.
+ This is because English is the only language supported.  We'll have to do
+ something more complicated if/when other translations appear.
+Author: Tim Retout <diocles@debian.org>
+
+--- /dev/null
++++ b/var/smoothwall/main/settings
+@@ -0,0 +1 @@
++LANGUAGE=en

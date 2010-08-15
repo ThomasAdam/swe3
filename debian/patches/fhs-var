@@ -137,3 +137,34 @@
  
  my $etherline = "var translations = new Array(); ";
  
+--- a/usr/lib/smoothwall/header.pm
++++ b/usr/lib/smoothwall/header.pm
+@@ -25,7 +25,7 @@
+ # such as fixes number etc.
+ 
+ my %productdata;
+-&readhash( "/var/smoothwall/main/productdata", \%productdata );
++&readhash( "/var/lib/swe3/smoothwall/main/productdata", \%productdata );
+ 
+ $version = "$productdata{'VERSION'}-$productdata{'REVISION'}-$productdata{'ARCH'}";
+ 
+@@ -39,7 +39,7 @@
+ 
+ # some constant defaults.
+ 
+-$swroot = '/var/smoothwall';
++$swroot = '/var/lib/swe3/smoothwall';
+ $thisscript = basename($ENV{'SCRIPT_NAME'});
+ 
+ # customised settings (such as languages)
+--- a/usr/lib/smoothwall/smoothtype.pm
++++ b/usr/lib/smoothwall/smoothtype.pm
+@@ -36,7 +36,7 @@
+         return "onMouseOver=\"$oplist return escape( $tip );\"";
+ }
+ 
+-my $files = "/var/smoothwall/knownports/*";
++my $files = "/var/lib/swe3/smoothwall/knownports/*";
+ 
+ sub portmap
+ {

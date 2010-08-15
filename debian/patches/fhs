@@ -586,3 +586,52 @@
  use header qw( :standard );
  use smoothd qw( message );
  use smoothtype qw( :standard );
+--- a/usr/lib/smoothwall/header.pm
++++ b/usr/lib/smoothwall/header.pm
+@@ -49,11 +49,11 @@
+ $language = $settings{'LANGUAGE'};
+ 
+ if ($language =~ /^(\w+)$/) {$language = $1;}
+-require "/usr/lib/smoothwall/langs/base.pl";
+-require "/usr/lib/smoothwall/langs/${language}.pl";
++require "/usr/share/swe3/perl/langs/base.pl";
++require "/usr/share/swe3/perl/langs/${language}.pl";
+ 
+-require "/usr/lib/smoothwall/langs/alertboxes.base.pl";
+-require "/usr/lib/smoothwall/langs/alertboxes.${language}.pl";
++require "/usr/share/swe3/perl/langs/alertboxes.base.pl";
++require "/usr/share/swe3/perl/langs/alertboxes.${language}.pl";
+ 
+ # Display the page HTTP header
+ 
+@@ -71,7 +71,7 @@
+ 
+ sub showmenu
+ {
+-	my $menuprefix = '/usr/lib/smoothwall/menu/';
++	my $menuprefix = '/usr/share/swe3/menu/';
+ 	$scriptname = $_[0];
+ 
+ 	# load the list of sections from the relevant location.
+--- a/usr/lib/smoothwall/smoothnet.pm
++++ b/usr/lib/smoothwall/smoothnet.pm
+@@ -1,7 +1,7 @@
+ # (c) 2004-2005 SmoothWall Ltd
+ 
+ package smoothnet;
+-use lib "/usr/lib/smoothwall";
++use lib "/usr/share/swe3/perl";
+ use header qw(:standard);
+ require Exporter;
+ use File::Copy;
+--- a/usr/lib/smoothwall/update.pm
++++ b/usr/lib/smoothwall/update.pm
+@@ -12,7 +12,7 @@
+ package update;
+ require Exporter;
+ 
+-use lib "/usr/lib/smoothwall/";
++use lib "/usr/share/swe3/perl/";
+ use header qw(:standard);
+ 
+ @ISA = qw(Exporter);

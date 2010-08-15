@@ -1,0 +1,8 @@
+# These values are mostly from distrib/build/sources/Makefile in the
+# expresscore source tree, and written by sources/media/Makefile.
+PRODUCT='Express'
+VERSION='3.0'
+REVISION='polar'
+UI_VERSION='3.0'
+FIXES='0'
+ARCH='all'
