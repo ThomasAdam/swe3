@@ -1,5 +1,5 @@
-httpd/html/ /usr/share/swe3/
-httpd/cgi-bin/ /usr/share/swe3/html/
+httpd/html/* /usr/share/swe3/html/
+httpd/cgi-bin/* /usr/share/swe3/html/cgi-bin/
 usr/lib/smoothwall/*.pm /usr/share/swe3/perl/
 usr/lib/smoothwall/langs /usr/share/swe3/perl/
 usr/lib/smoothwall/menu /usr/share/swe3/
