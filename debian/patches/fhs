@@ -470,12 +470,12 @@
  my %coreservices;
  
 -opendir(DIR, "/usr/lib/smoothwall/services/");
-+opendir(DIR, "/usr/share/swe3/perl/services/");
++opendir(DIR, "/usr/share/swe3/services/");
  my @files = grep {!/\./} readdir(DIR);
  
  foreach my $file ( sort @files ){
 -	open ( my $line, "</usr/lib/smoothwall/services/$file" ) or next;
-+	open ( my $line, "</usr/share/swe3/perl/services/$file" ) or next;
++	open ( my $line, "</usr/share/swe3/services/$file" ) or next;
  	my ( $name, $rel ) = split /,/, <$line>;
  	close $line;
  	chomp $name;
