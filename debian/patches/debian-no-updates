@@ -2,3 +2,37 @@
 +++ /dev/null
 @@ -1 +0,0 @@
 -ssupdates:updates.cgi
+--- a/httpd/cgi-bin/index.cgi
++++ b/httpd/cgi-bin/index.cgi
+@@ -259,31 +259,6 @@
+ 
+ &closebox();
+ 
+-open(AV, "${swroot}/patches/available") or die "Could not open available patches database ($!)";
+-@av = <AV>;
+-close(AV);
+-open(PF, "${swroot}/patches/installed") or die "Could not open installed patches file. ($!)<br>";
+-while(<PF>)
+-{
+-        next if $_ =~ m/^#/;
+-        @temp = split(/\|/,$_);
+-        @av = grep(!/^$temp[0]/, @av);
+-}
+-close(PF);
+-
+-if ($#av != -1)
+-{
+-	&pageinfo($alertbox{"texterror"}, "$tr{'there are updates'}");
+-}
+-$age = &age("/${swroot}/patches/available");
+-if ($age =~ m/(\d{1,3})d/)
+-{
+-	if ($1 >= 7)
+-	{
+-		&pageinfo($alertbox{"texterror"}, "$tr{'updates is old1'} $age $tr{'updates is old2'}");
+-	}
+-}
+-
+ print "<br/><table class='blank'><tr><td class='note'>";
+ 
+ system('/usr/bin/uptime');
