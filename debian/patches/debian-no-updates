@@ -1,0 +1,4 @@
+--- a/usr/lib/smoothwall/menu/9000_Maintenance/0000_updates.list
++++ /dev/null
+@@ -1 +0,0 @@
+-ssupdates:updates.cgi
