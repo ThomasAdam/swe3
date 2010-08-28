@@ -8,7 +8,10 @@ Homepage: http://www.smoothwall.org/
 
 Package: swe3
 Architecture: all
-Depends: ${misc:Depends}, ${perl:Depends}, swe3-smoothd
+Depends: ${misc:Depends}, ${perl:Depends}, swe3-smoothd, apache2
+Recommends: imspector, ppp, pppoe, clamav, snort, setserial, squid, libgmp3c2, pciutils, tcpdump, libncurses5, rsyslog,
+            ssh, libgd-gd2-perl, isc-dhcp-server, noip2, ez-ipupdate, openswan, oinkmaster, dnsmasq, ntp, siproxd, libpopt0
+Suggests: vim, joe, ibod
 Description: web interface for firewall administration
  This is the web interface from SmoothWall Express 3.0, modified to
  run on a Debian system.  It lets you administer a simple firewall.
