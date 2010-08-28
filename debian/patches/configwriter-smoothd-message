@@ -1,0 +1,213 @@
+--- a/httpd/cgi-bin/hosts.cgi
++++ b/httpd/cgi-bin/hosts.cgi
+@@ -51,7 +51,8 @@
+ 		$cgiparams{'ORDER'} = $tr{'log ascending'};
+ 		&log($tr{'host added to hosts list.'});
+ 		
+-		system('/usr/bin/smoothwall/writehosts.pl');
++        message( "sethost" );
++        ###system('/usr/bin/smoothwall/writehosts.pl');
+ 
+ 		my $success = message('dnsproxyhup');
+ 		if (not defined $success) {
+@@ -101,7 +102,8 @@
+ 		close(FILE);
+ 		&log($tr{'host removed from host list'});
+ 
+-		system('/usr/bin/smoothwall/writehosts.pl');
++        message( "sethost" );
++        ###system('/usr/bin/smoothwall/writehosts.pl');
+ 
+ 		my $success = message('dnsproxyhup');
+ 		if (not defined $success) {
+--- a/httpd/cgi-bin/im.cgi
++++ b/httpd/cgi-bin/im.cgi
+@@ -47,7 +47,8 @@
+ 
+ 	if ($imsettings{'VALID'} eq 'yes')
+ 	{
+-		system('/usr/bin/smoothwall/writeim.pl');
++        message( "write_im_config" );
++        ###system('/usr/bin/smoothwall/writeim.pl');
+ 		
+ 		my $success = message('imrestart');
+ 		
+--- a/httpd/cgi-bin/interfaces.cgi
++++ b/httpd/cgi-bin/interfaces.cgi
+@@ -115,7 +115,14 @@
+ 
+ 		# cyclenetworking flushes iptables, which will make some services
+ 		# inaccessible. Restart all services which depend on firewall rules.
+-		system('/usr/bin/smoothwall/writedhcp.pl');
++
++        my $config_success = message( "write_dhcpd_config" );
++
++        unless( defined $config_success )
++        {
++            $errormessage = "Couldn't run dhcpd config writer.";
++        }
++        ###system('/usr/bin/smoothwall/writedhcp.pl');
+ 
+ 		foreach my $service (qw(dhcpd p3scan squid im sip)) {
+ 			my $success = message($service.'restart');
+--- a/httpd/cgi-bin/p3scan.cgi
++++ b/httpd/cgi-bin/p3scan.cgi
+@@ -46,7 +46,12 @@
+ 
+ 	if ($p3scansettings{'VALID'} eq 'yes')
+ 	{
+-		system('/usr/bin/smoothwall/writep3scan.pl');
++        my $config_success = message( "write_p3scan_config" );
++        unless( defined $config_success )
++        {
++            $errormessage = "Couldn't run p3scan config.";
++        }
++        ###system('/usr/bin/smoothwall/writep3scan.pl');
+ 		
+ 		my $success = message('p3scanrestart');
+ 		
+--- a/httpd/cgi-bin/proxy.cgi
++++ b/httpd/cgi-bin/proxy.cgi
+@@ -82,7 +82,12 @@
+ 	&writehash("${swroot}/proxy/settings", \%proxysettings);
+ 	if ($proxysettings{'VALID'} eq 'yes')
+ 	{
+-		system('/usr/bin/smoothwall/writeproxy.pl');
++        my $config_success = message( "write_proxy_config" );
++        unless( $config_message )
++        {
++            $errormessage = "Couldn't run proxy config writer.";
++        }
++        ###system('/usr/bin/smoothwall/writeproxy.pl');
+         	
+         	my @args = ('squidrestart');
+         	if ($proxysettings{'ACTION'} eq $tr{'save and restart with cleared cache'}) {
+--- a/httpd/cgi-bin/register.cgi
++++ b/httpd/cgi-bin/register.cgi
+@@ -20,7 +20,7 @@
+ 
+ if ( defined $settings{'ACTION'} and $settings{'ACTION'} eq $tr{'get system id'} ){
+ 	if ( -e "/var/lib/swe3/smoothwall/notregistered" ) {
+-        	system( '/usr/bin/smoothwall/machine_reg.pl');
++        	system( '/usr/share/swe3/bin/machine_reg.pl');
+ 		if ( $? eq 0 ){
+                 	unlink "/var/lib/swe3/smoothwall/notregistered";
+ 		} else {
+--- a/httpd/cgi-bin/sipproxy.cgi
++++ b/httpd/cgi-bin/sipproxy.cgi
+@@ -30,7 +30,13 @@
+ 		&log("SIP service restarted.");
+ 	
+ 		&writehash("${swroot}/sipproxy/settings", \%sipsettings);
+-		system("/usr/bin/smoothwall/writesiproxdconf.pl");
++
++        my $config_success = message( "write_sip_config" );
++        unless( defined $config_success )
++        {
++            $errormessage = "Couldn't run sip config writer.";
++        }
++        ###system("/usr/bin/smoothwall/writesiproxdconf.pl");
+ 		my $success = message("siprestart");
+ 		if (not defined $success) {
+ 			$errormessage = $tr{'smoothd failure'}; }
+--- a/httpd/cgi-bin/time.cgi
++++ b/httpd/cgi-bin/time.cgi
+@@ -97,7 +97,7 @@
+ 		$day = $timesettings{'DAY'};
+ 
+ 		$timedate = "$timesettings{'HOUR'}:$timesettings{'MINUTE'}:$timesettings{'SECOND'} $year/$month/$day";
+-		system('/usr/bin/smoothcom', 'settime', $timedate);
++		message( 'settime', $timedate);
+ 		&log($tr{'setting time'});
+ 	}
+ 
+@@ -121,7 +121,12 @@
+ 	
+ 	if ($timesettings{'VALID'} eq 'yes')
+ 	{	
+-		system('/usr/bin/smoothwall/writentpd.pl');
++        my $config_success = message( "write_ntpd_config" );
++        unless( defined $config_success )
++        {
++            $errormessage = "Couldn't run ntpd config writer.";
++        }
++        ###system('/usr/bin/smoothwall/writentpd.pl');
+ 	
+ 		my $success = message('ntpdrestart');
+ 		
+--- a/httpd/cgi-bin/vpn.cgi/vpnconfig.dat
++++ b/httpd/cgi-bin/vpn.cgi/vpnconfig.dat
+@@ -9,6 +9,7 @@
+ use lib "/usr/share/swe3/perl";
+ use header qw( :standard );
+ use smoothtype qw(:standard);
++use smoothd qw/ message /;
+ 
+ my %cgiparams;
+ my $filename = "${swroot}/vpn/config";
+@@ -19,6 +20,19 @@
+ 
+ my $errormessage = '';
+ 
++sub __run_ipsec_configwriter
++{
++    my $config_success = message( "write_ipsec_config" );
++    my $local_errormessage = '';
++
++    unless( defined $config_success )
++    {
++        $local_errormessage = "Couldn't run ipsec config writer.";
++    }
++
++    return $local_errormessage;
++}
++
+ if ($cgiparams{'ACTION'} eq $tr{'add'})
+ {
+ 	unless ($cgiparams{'NAME'} =~ /^[a-zA-Z]+$/) {
+@@ -57,7 +71,8 @@
+ 		close(FILE);
+ 		undef %cgiparams;
+ 
+-		system('/usr/bin/smoothwall/writeipsec.pl');
++        $errormessage = __run_ipsec_configwriter();
++        ###system('/usr/bin/smoothwall/writeipsec.pl');
+ 	}
+ }
+ if ($cgiparams{'ACTION'} eq $tr{'remove'} || $cgiparams{'ACTION'} eq $tr{'edit'})
+@@ -107,7 +122,8 @@
+ 		}
+ 		close(FILE);
+ 
+-		system('/usr/bin/smoothwall/writeipsec.pl');
++        $errormessage = __run_ipsec_configwriter();
++        ###system('/usr/bin/smoothwall/writeipsec.pl');
+ 	}
+ }
+ if ($cgiparams{'ACTION'} eq $tr{'export'})
+@@ -130,7 +146,8 @@
+                 print FILE $cgiparams{'FH'};
+ 		close (FILE);
+ 		
+-		system('/usr/bin/smoothwall/writeipsec.pl');
++        $errormessage = __run_ipsec_configwriter();
++        ###system('/usr/bin/smoothwall/writeipsec.pl');
+ 	}
+ }
+ if ($cgiparams{'ACTION'} eq '')
+--- a/httpd/cgi-bin/vpnmain.cgi
++++ b/httpd/cgi-bin/vpnmain.cgi
+@@ -37,7 +37,12 @@
+ 
+ if ($cgiparams{'ACTION'} eq $tr{'restart'})
+ {
+-	system('/usr/bin/smoothwall/writeipsec.pl');
++    my $config_success = message( "write_ipsec_config" );
++    unless( defined $config_success )
++    {
++        $errormessage = "Couldn't write ipsec config.";
++    }
++    ###system('/usr/bin/smoothwall/writeipsec.pl');
+ 
+ 	my $success = message('ipsecrestart');
+ 	
