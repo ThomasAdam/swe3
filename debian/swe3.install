@@ -4,6 +4,7 @@ usr/lib/smoothwall/*.pm /usr/share/swe3/perl/
 usr/lib/smoothwall/langs /usr/share/swe3/perl/
 usr/lib/smoothwall/menu /usr/share/swe3/
 usr/lib/smoothwall/services /usr/share/swe3/
+usr/bin/smoothwall/* /usr/share/swe3/bin/
 etc/rc.d /usr/share/swe3/
 var/smoothwall* /var/lib/swe3/
 debian/productdata /var/lib/swe3/smoothwall/main/
