@@ -1,0 +1,74 @@
+--- /dev/null
++++ b/usr/lib/smoothwall/services/apache2
+@@ -0,0 +1 @@
++web server,core
+--- a/usr/lib/smoothwall/services/httpd
++++ /dev/null
+@@ -1 +0,0 @@
+-web server,core
+--- a/usr/lib/smoothwall/services/cron
++++ /dev/null
+@@ -1 +0,0 @@
+-cron server,core
+--- /dev/null
++++ b/usr/lib/smoothwall/services/crond
+@@ -0,0 +1 @@
++cron server,core
+--- a/usr/lib/smoothwall/services/dnsmasq
++++ /dev/null
+@@ -1 +0,0 @@
+-dns proxy server,core
+--- /dev/null
++++ b/usr/lib/smoothwall/services/dnsmasq-dnsmasq
+@@ -0,0 +1 @@
++dns proxy server,core
+--- a/usr/lib/smoothwall/services/klogd
++++ /dev/null
+@@ -1 +0,0 @@
+-kernel logging server,core
+--- /dev/null
++++ b/usr/lib/smoothwall/services/rsyslogd
+@@ -0,0 +1 @@
++logging server,core
+--- a/usr/lib/smoothwall/services/syslogd
++++ /dev/null
+@@ -1 +0,0 @@
+-logging server,core
+--- /dev/null
++++ b/usr/lib/smoothwall/services/clamav-clamd
+@@ -0,0 +1 @@
++clam antivirus server
+--- a/usr/lib/smoothwall/services/clamd
++++ /dev/null
+@@ -1 +0,0 @@
+-clam antivirus server
+--- a/usr/lib/smoothwall/services/p3scan
++++ /dev/null
+@@ -1 +0,0 @@
+-pop3 proxy server
+--- /dev/null
++++ b/usr/lib/smoothwall/services/p3scan-p3scan
+@@ -0,0 +1 @@
++pop3 proxy server
+--- a/httpd/cgi-bin/status.cgi
++++ b/httpd/cgi-bin/status.cgi
+@@ -144,15 +144,7 @@
+ 	{
+  		$pid = <FILE>; chomp $pid;
+ 		close FILE;
+-		if (open(FILE, "/proc/${pid}/status"))
+ 		{
+-			while (<FILE>)
+-			{
+-				if (/^Name:\W+(.*)/) {
+-					$testcmd = $1; }
+-			}
+-			close FILE;
+-			if ($testcmd =~ /$exename/)
+ 			{
+ 				$status = status_line( "running" );
+ 
+--- a/usr/lib/smoothwall/services/miniupnpd
++++ /dev/null
+@@ -1 +0,0 @@
+-upnp
