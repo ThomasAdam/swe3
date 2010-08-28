@@ -1,7 +1,5 @@
-Index: swe3/usr/bin/smoothwall/setddns.pl
-===================================================================
---- swe3.orig/usr/bin/smoothwall/setddns.pl	2010-08-28 14:54:53.000000000 +0100
-+++ swe3/usr/bin/smoothwall/setddns.pl	2010-08-28 15:21:10.000000000 +0100
+--- a/usr/bin/smoothwall/setddns.pl
++++ b/usr/bin/smoothwall/setddns.pl
 @@ -10,7 +10,7 @@
  close(STDOUT);
  close(STDERR);
@@ -11,10 +9,8 @@ Index: swe3/usr/bin/smoothwall/setddns.pl
  use header qw( :standard );
  
  my %settings;
-Index: swe3/usr/bin/smoothwall/writecnxadslconfig.pl
-===================================================================
---- swe3.orig/usr/bin/smoothwall/writecnxadslconfig.pl	2010-08-28 14:54:54.000000000 +0100
-+++ swe3/usr/bin/smoothwall/writecnxadslconfig.pl	2010-08-28 15:23:50.000000000 +0100
+--- a/usr/bin/smoothwall/writecnxadslconfig.pl
++++ b/usr/bin/smoothwall/writecnxadslconfig.pl
 @@ -1,6 +1,6 @@
  #!/usr/bin/perl
  
@@ -32,10 +28,8 @@ Index: swe3/usr/bin/smoothwall/writecnxadslconfig.pl
  
  while (<IN>) { print OUT $_; }
  
-Index: swe3/usr/bin/smoothwall/writeeagleconfig.pl
-===================================================================
---- swe3.orig/usr/bin/smoothwall/writeeagleconfig.pl	2010-08-28 14:54:54.000000000 +0100
-+++ swe3/usr/bin/smoothwall/writeeagleconfig.pl	2010-08-28 15:42:09.000000000 +0100
+--- a/usr/bin/smoothwall/writeeagleconfig.pl
++++ b/usr/bin/smoothwall/writeeagleconfig.pl
 @@ -1,6 +1,6 @@
  #!/usr/bin/perl
  
@@ -44,10 +38,8 @@ Index: swe3/usr/bin/smoothwall/writeeagleconfig.pl
  use header qw( :standard );
  
  my @current;
-Index: swe3/usr/bin/smoothwall/writehosts.pl
-===================================================================
---- swe3.orig/usr/bin/smoothwall/writehosts.pl	2010-08-28 14:54:54.000000000 +0100
-+++ swe3/usr/bin/smoothwall/writehosts.pl	2010-08-28 15:45:09.000000000 +0100
+--- a/usr/bin/smoothwall/writehosts.pl
++++ b/usr/bin/smoothwall/writehosts.pl
 @@ -4,7 +4,7 @@
  #
  # This script rewrites the hosts file
@@ -57,10 +49,8 @@ Index: swe3/usr/bin/smoothwall/writehosts.pl
  use header qw( :standard );
  
  my (%netsettings, %dhcpsettings, %mainsettings);
-Index: swe3/usr/bin/smoothwall/writeim.pl
-===================================================================
---- swe3.orig/usr/bin/smoothwall/writeim.pl	2010-08-28 14:54:54.000000000 +0100
-+++ swe3/usr/bin/smoothwall/writeim.pl	2010-08-28 15:47:46.000000000 +0100
+--- a/usr/bin/smoothwall/writeim.pl
++++ b/usr/bin/smoothwall/writeim.pl
 @@ -4,14 +4,14 @@
  #
  # This script rewrites the IMSpector config
@@ -78,10 +68,8 @@ Index: swe3/usr/bin/smoothwall/writeim.pl
  my @conf = <FILE>;
  close(FILE);
  open(FILE, ">${swroot}/im/imspector.conf");
-Index: swe3/usr/bin/smoothwall/writeipac.pl
-===================================================================
---- swe3.orig/usr/bin/smoothwall/writeipac.pl	2010-08-28 14:54:54.000000000 +0100
-+++ swe3/usr/bin/smoothwall/writeipac.pl	2010-08-28 15:48:36.000000000 +0100
+--- a/usr/bin/smoothwall/writeipac.pl
++++ b/usr/bin/smoothwall/writeipac.pl
 @@ -4,7 +4,7 @@
  #
  # (c) Lawrence Manning, 2001
@@ -91,10 +79,8 @@ Index: swe3/usr/bin/smoothwall/writeipac.pl
  use header qw( :standard );
  
  my %settings;
-Index: swe3/usr/bin/smoothwall/writeipsec.pl
-===================================================================
---- swe3.orig/usr/bin/smoothwall/writeipsec.pl	2010-08-28 14:54:54.000000000 +0100
-+++ swe3/usr/bin/smoothwall/writeipsec.pl	2010-08-28 15:48:58.000000000 +0100
+--- a/usr/bin/smoothwall/writeipsec.pl
++++ b/usr/bin/smoothwall/writeipsec.pl
 @@ -6,7 +6,7 @@
  #
  # (c) The SmoothWall Team
@@ -104,10 +90,8 @@ Index: swe3/usr/bin/smoothwall/writeipsec.pl
  use header qw( :standard );
  
  my $filename = "${swroot}/vpn/config";
-Index: swe3/usr/bin/smoothwall/writentpd.pl
-===================================================================
---- swe3.orig/usr/bin/smoothwall/writentpd.pl	2010-08-28 14:54:54.000000000 +0100
-+++ swe3/usr/bin/smoothwall/writentpd.pl	2010-08-28 15:49:36.000000000 +0100
+--- a/usr/bin/smoothwall/writentpd.pl
++++ b/usr/bin/smoothwall/writentpd.pl
 @@ -6,7 +6,7 @@
  #
  # (c) SmoothWall Ltd 2002, 2003
@@ -117,10 +101,8 @@ Index: swe3/usr/bin/smoothwall/writentpd.pl
  use header qw( :standard );
  
  my %netsettings;
-Index: swe3/usr/bin/smoothwall/writep3scan.pl
-===================================================================
---- swe3.orig/usr/bin/smoothwall/writep3scan.pl	2010-08-28 14:54:54.000000000 +0100
-+++ swe3/usr/bin/smoothwall/writep3scan.pl	2010-08-28 15:50:35.000000000 +0100
+--- a/usr/bin/smoothwall/writep3scan.pl
++++ b/usr/bin/smoothwall/writep3scan.pl
 @@ -4,14 +4,14 @@
  #
  # This script rewrites the p3scan config
@@ -138,10 +120,8 @@ Index: swe3/usr/bin/smoothwall/writep3scan.pl
  my @conf = <FILE>;
  close(FILE);
  open(FILE, ">${swroot}/p3scan/p3scan.conf");
-Index: swe3/usr/bin/smoothwall/writeproxy.pl
-===================================================================
---- swe3.orig/usr/bin/smoothwall/writeproxy.pl	2010-08-28 14:54:54.000000000 +0100
-+++ swe3/usr/bin/smoothwall/writeproxy.pl	2010-08-28 15:51:23.000000000 +0100
+--- a/usr/bin/smoothwall/writeproxy.pl
++++ b/usr/bin/smoothwall/writeproxy.pl
 @@ -6,7 +6,7 @@
  #
  # (c) The SmoothWall Team
@@ -151,10 +131,8 @@ Index: swe3/usr/bin/smoothwall/writeproxy.pl
  use header qw( :standard );
  
  my %proxysettings;
-Index: swe3/usr/bin/smoothwall/writesiproxdconf.pl
-===================================================================
---- swe3.orig/usr/bin/smoothwall/writesiproxdconf.pl	2010-08-28 14:54:54.000000000 +0100
-+++ swe3/usr/bin/smoothwall/writesiproxdconf.pl	2010-08-28 15:53:20.000000000 +0100
+--- a/usr/bin/smoothwall/writesiproxdconf.pl
++++ b/usr/bin/smoothwall/writesiproxdconf.pl
 @@ -4,7 +4,7 @@
  #
  # (c) Smoothwall Ltd 2007
