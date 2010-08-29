@@ -1,0 +1,144 @@
+--- a/usr/bin/smoothwall/setddns.pl
++++ b/usr/bin/smoothwall/setddns.pl
+@@ -10,7 +10,7 @@
+ close(STDOUT);
+ close(STDERR);
+ 
+-use lib "/usr/lib/smoothwall";
++use lib "/usr/lib/swe3/perl";
+ use header qw( :standard );
+ 
+ my %settings;
+--- a/usr/bin/smoothwall/writecnxadslconfig.pl
++++ b/usr/bin/smoothwall/writecnxadslconfig.pl
+@@ -1,6 +1,6 @@
+ #!/usr/bin/perl
+ 
+-use lib "/usr/lib/smoothwall";
++use lib "/usr/share/swe3/perl";
+ use header qw( :standard );
+ 
+ my %adslsettings;
+@@ -8,7 +8,7 @@
+ &readhash("${swroot}/adsl/settings", \%adslsettings);
+ 
+ open(IN, '/usr/lib/smoothwall/cnxadsl.conf.in');
+-open(OUT, '>/usr/etc/cnxadsl/cnxadsl.conf');
++open(OUT, '>/etc/swe3/cnxadsl/cnxadsl.conf');
+ 
+ while (<IN>) { print OUT $_; }
+ 
+--- a/usr/bin/smoothwall/writeeagleconfig.pl
++++ b/usr/bin/smoothwall/writeeagleconfig.pl
+@@ -1,6 +1,6 @@
+ #!/usr/bin/perl
+ 
+-use lib "/usr/lib/smoothwall";
++use lib "/usr/share/swe3/perl/";
+ use header qw( :standard );
+ 
+ my @current;
+--- a/usr/bin/smoothwall/writehosts.pl
++++ b/usr/bin/smoothwall/writehosts.pl
+@@ -4,7 +4,7 @@
+ #
+ # This script rewrites the hosts file
+ 
+-use lib "/usr/lib/smoothwall";
++use lib "/usr/share/swe3/perl";
+ use header qw( :standard );
+ 
+ my (%netsettings, %dhcpsettings, %mainsettings);
+--- a/usr/bin/smoothwall/writeim.pl
++++ b/usr/bin/smoothwall/writeim.pl
+@@ -4,14 +4,14 @@
+ #
+ # This script rewrites the IMSpector config
+ 
+-use lib "/usr/lib/smoothwall/";
++use lib "/usr/share/swe3/perl";
+ use header qw( :standard );
+ 
+ my %settings;
+ 
+ &readhash("${swroot}/im/settings", \%imsettings);
+ 
+-open(FILE, "/usr/lib/smoothwall/imspector.conf.in");
++open(FILE, "/usr/share/swe3/imspector.conf.in");
+ my @conf = <FILE>;
+ close(FILE);
+ open(FILE, ">${swroot}/im/imspector.conf");
+--- a/usr/bin/smoothwall/writeipac.pl
++++ b/usr/bin/smoothwall/writeipac.pl
+@@ -4,7 +4,7 @@
+ #
+ # (c) Lawrence Manning, 2001
+ 
+-use lib "/usr/lib/smoothwall";
++use lib "/usr/share/swe3/perl";
+ use header qw( :standard );
+ 
+ my %settings;
+--- a/usr/bin/smoothwall/writeipsec.pl
++++ b/usr/bin/smoothwall/writeipsec.pl
+@@ -6,7 +6,7 @@
+ #
+ # (c) The SmoothWall Team
+ 
+-use lib "/usr/lib/smoothwall";
++use lib "/usr/share/swe3/perl/";
+ use header qw( :standard );
+ 
+ my $filename = "${swroot}/vpn/config";
+--- a/usr/bin/smoothwall/writentpd.pl
++++ b/usr/bin/smoothwall/writentpd.pl
+@@ -6,7 +6,7 @@
+ #
+ # (c) SmoothWall Ltd 2002, 2003
+ 
+-use lib "/usr/lib/smoothwall";
++use lib "/usr/share/swe3/perl";
+ use header qw( :standard );
+ 
+ my %netsettings;
+--- a/usr/bin/smoothwall/writep3scan.pl
++++ b/usr/bin/smoothwall/writep3scan.pl
+@@ -4,14 +4,14 @@
+ #
+ # This script rewrites the p3scan config
+ 
+-use lib "/usr/lib/smoothwall/";
++use lib "/usr/share/swe3/perl";
+ use header qw( :standard );
+ 
+ my %settings;
+ 
+ &readhash("${swroot}/p3scan/settings", \%p3scansettings);
+ 
+-open(FILE, "/usr/lib/smoothwall/p3scan.conf.in");
++open(FILE, "/usr/share/swe3/lib/p3scan.conf.in");
+ my @conf = <FILE>;
+ close(FILE);
+ open(FILE, ">${swroot}/p3scan/p3scan.conf");
+--- a/usr/bin/smoothwall/writeproxy.pl
++++ b/usr/bin/smoothwall/writeproxy.pl
+@@ -6,7 +6,7 @@
+ #
+ # (c) The SmoothWall Team
+ 
+-use lib "/usr/lib/smoothwall";
++use lib "/usr/share/swe3/perl";
+ use header qw( :standard );
+ 
+ my %proxysettings;
+--- a/usr/bin/smoothwall/writesiproxdconf.pl
++++ b/usr/bin/smoothwall/writesiproxdconf.pl
+@@ -4,7 +4,7 @@
+ #
+ # (c) Smoothwall Ltd 2007
+ 
+-use lib "/usr/lib/smoothwall";
++use lib "/usr/share/swe3/perl";
+ use header qw( :standard );
+ 
+ my %sipsettings;

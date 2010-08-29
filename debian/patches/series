@@ -6,3 +6,5 @@ fix-ping-and-traceroute
 fix-lspci
 debian-services
 debian-no-updates
+configwriter
+configwriter-smoothd-message
