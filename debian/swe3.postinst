@@ -27,6 +27,16 @@ case "$1" in
 	    ln -s /etc/swe3/apache2.conf /etc/apache2/conf.d/swe3
 	fi
 
+	NET_SETTINGS=/var/lib/swe3/smoothwall/ethernet/settings
+
+	echo "CONFIG_TYPE=2" > $NET_SETTINGS
+
+	db_get swe3/red_interface
+	echo "RED_DEV=$RET" >> $NET_SETTINGS
+
+	db_get swe3/green_interface
+	echo "GREEN_DEV=$RET" >> $NET_SETTINGS
+
 	db_get swe3/web_server_groups
 	if [ "$RET" = true ]; then
 	    adduser www-data adm

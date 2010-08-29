@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: swe3@packages.debian.org\n"
-"POT-Creation-Date: 2010-08-29 14:15+0100\n"
+"POT-Creation-Date: 2010-08-29 17:47+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -30,4 +30,16 @@ msgid ""
 "The swe3 web interface has the ability to display log files from various "
 "system daemons. However, for these to work, the web server must be able to "
 "read these system log files."
+msgstr ""
+
+#. Type: string
+#. Description
+#: ../swe3.templates:2001
+msgid "Which is the external interface?"
+msgstr ""
+
+#. Type: string
+#. Description
+#: ../swe3.templates:3001
+msgid "Which is the internal interface?"
 msgstr ""
