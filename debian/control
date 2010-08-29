@@ -2,14 +2,14 @@ Source: swe3
 Section: admin
 Priority: optional
 Maintainer: Tim Retout <diocles@debian.org>
-Build-Depends: debhelper (>= 8)
+Build-Depends: debhelper (>= 8), po-debconf
 Standards-Version: 3.9.1
 Homepage: http://www.smoothwall.org/
 
 Package: swe3
 Architecture: all
-Depends: ${misc:Depends}, ${perl:Depends}, swe3-smoothd, apache2
-Recommends: imspector, ppp, pppoe, clamav, p3scan, snort, setserial, squid, libgmp3c2, pciutils, tcpdump, libncurses5, rsyslog,
+Depends: ${misc:Depends}, ${perl:Depends}, swe3-smoothd, apache2, adduser
+Recommends: imspector, ppp, pppoe, p3scan, clamav, snort, setserial, squid, libgmp3c2, pciutils, tcpdump, libncurses5, rsyslog,
             ssh, libgd-gd2-perl, bird, isc-dhcp-server, noip2, ez-ipupdate, openswan, oinkmaster, dnsmasq, ntp, siproxd, libpopt0
 Suggests: vim, joe, ibod
 Description: web interface for firewall administration

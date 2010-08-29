@@ -17,6 +17,7 @@ set -e
 # for details, see http://www.debian.org/doc/debian-policy/ or
 # the debian-policy package
 
+. /usr/share/debconf/confmodule
 
 case "$1" in
     configure)
@@ -24,6 +25,12 @@ case "$1" in
 	if [ "x$2" = "x" ]; then
 	    mkdir -p /etc/apache2/conf.d
 	    ln -s /etc/swe3/apache2.conf /etc/apache2/conf.d/swe3
+	fi
+
+	db_get swe3/web_server_groups
+	if [ "$RET" = true ]; then
+	    adduser www-data adm
+	    adduser www-data proxy
 	fi
     ;;
 
