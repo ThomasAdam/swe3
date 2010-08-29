@@ -5,3 +5,11 @@ _Description: Add web server user to administrator groups?
  The swe3 web interface has the ability to display log files from various
  system daemons. However, for these to work, the web server must be able
  to read these system log files.
+
+Template: swe3/red_interface
+Type: string
+_Description: Which is the external interface?
+
+Template: swe3/green_interface
+Type: string
+_Description: Which is the internal interface?
