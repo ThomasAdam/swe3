@@ -2,13 +2,13 @@ Source: swe3
 Section: admin
 Priority: optional
 Maintainer: Tim Retout <diocles@debian.org>
-Build-Depends: debhelper (>= 8)
+Build-Depends: debhelper (>= 8), po-debconf
 Standards-Version: 3.9.1
 Homepage: http://www.smoothwall.org/
 
 Package: swe3
 Architecture: all
-Depends: ${misc:Depends}, ${perl:Depends}, swe3-smoothd, apache2
+Depends: ${misc:Depends}, ${perl:Depends}, swe3-smoothd, apache2, adduser
 Recommends: imspector, ppp, pppoe, clamav, snort, setserial, squid, libgmp3c2, pciutils, tcpdump, libncurses5, rsyslog,
             ssh, libgd-gd2-perl, isc-dhcp-server, noip2, ez-ipupdate, openswan, oinkmaster, dnsmasq, ntp, siproxd, libpopt0
 Suggests: vim, joe, ibod

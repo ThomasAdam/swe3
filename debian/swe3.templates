@@ -1,0 +1,7 @@
+Template: swe3/web_server_groups
+Type: boolean
+Default: true
+_Description: Add web server user to administrator groups?
+ The swe3 web interface has the ability to display log files from various
+ system daemons. However, for these to work, the web server must be able
+ to read these system log files.
