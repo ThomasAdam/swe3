@@ -32,6 +32,8 @@ case "$1" in
 	    adduser www-data adm
 	    adduser www-data proxy
 	fi
+
+	chown -R www-data /var/lib/swe3
     ;;
 
     abort-upgrade|abort-remove|abort-deconfigure)
