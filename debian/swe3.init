@@ -50,7 +50,7 @@ failed_to_start()
 do_start()
 {
     echo -n "Starting SmoothWall Express 3 : "
-    $SWE3_FW_UP && echo "Done." || failed_to_start
+    $SWE3_FW_UP >/dev/null 2>&1 && echo "Done." || failed_to_start
 
     return 0
 }
@@ -61,7 +61,7 @@ do_start()
 do_stop()
 {
     echo -n "Stopping SmoothWall Express 3 : "
-    $SWE3_FW_DOWN && echo "Done." || failed_to_start
+    $SWE3_FW_DOWN >/dev/null 2>&1 && echo "Done." || failed_to_start
 
     return 0
 }
