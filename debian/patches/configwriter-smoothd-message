@@ -1,16 +1,22 @@
 --- a/httpd/cgi-bin/hosts.cgi
 +++ b/httpd/cgi-bin/hosts.cgi
-@@ -51,7 +51,8 @@
+@@ -50,8 +50,13 @@
+ 		$cgiparams{'COLUMN'} = 1;
  		$cgiparams{'ORDER'} = $tr{'log ascending'};
  		&log($tr{'host added to hosts list.'});
- 		
+-		
 -		system('/usr/bin/smoothwall/writehosts.pl');
-+        message( "sethost" );
++
++        my $config_success = message( "sethost" );
++        unless( defined $config_success )
++        {
++            $errormessage = "Couldn't run host config writer.";
++        }
 +        ###system('/usr/bin/smoothwall/writehosts.pl');
  
  		my $success = message('dnsproxyhup');
  		if (not defined $success) {
-@@ -101,7 +102,8 @@
+@@ -101,7 +106,8 @@
  		close(FILE);
  		&log($tr{'host removed from host list'});
  
@@ -22,12 +28,16 @@
  		if (not defined $success) {
 --- a/httpd/cgi-bin/im.cgi
 +++ b/httpd/cgi-bin/im.cgi
-@@ -47,7 +47,8 @@
+@@ -47,7 +47,12 @@
  
  	if ($imsettings{'VALID'} eq 'yes')
  	{
 -		system('/usr/bin/smoothwall/writeim.pl');
-+        message( "write_im_config" );
++        my $config_success = message( "write_im_config" );
++        unless( defined $config_success )
++        {
++            $erormessage = "Couldn't run IMSpector config writer.";
++        }
 +        ###system('/usr/bin/smoothwall/writeim.pl');
  		
  		my $success = message('imrestart');
