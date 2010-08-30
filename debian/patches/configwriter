@@ -142,3 +142,14 @@
  use header qw( :standard );
  
  my %sipsettings;
+--- a/usr/bin/smoothwall/writedhcp.pl
++++ b/usr/bin/smoothwall/writedhcp.pl
+@@ -6,7 +6,7 @@
+ #
+ # (c) The SmoothWall Team
+ 
+-use lib "/usr/lib/smoothwall";
++use lib "/usr/share/swe3/perl";
+ use header qw( :standard );
+ 
+ my %dhcpsettings;
