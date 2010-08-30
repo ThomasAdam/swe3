@@ -1,0 +1,89 @@
+#! /bin/sh
+### BEGIN INIT INFO
+# Provides:          swe3
+# Required-Start:    $network $remote_fs
+# Required-Stop:     $network $remote_fs
+# Default-Start:     S
+# Default-Stop:      0 6
+# Short-Description: Configure SmoothWall Express 3 at boot time.
+# Description:       Starts and stops the SmoothWall Express 3 firewall.
+### END INIT INFO
+
+# Author: Thomas Adam <thomas@xteddy.org>
+
+SWE3_SCRIPT_PATH="/usr/share/swe3/rc.d"
+SWE3_FW_UP="$SWE3_SCRIPT_PATH/rc.firewall.up"
+SWE3_FW_DOWN="$SWE3_SCRIPT_PATH/rc.firewall.down"
+
+# Exit if neither of the SWE3_FW_UP or SWE3_FW_DOWN exist.
+[ -e "$SWE3_FW_UP" ] || [ -e "$SWE3_FW_DOWN" ] && exit 0
+
+# If we're not root, bail.
+[ "$(id -u)" != "0" ] && {
+    echo "Only root can start, stop or restart the SmoothWall Express 3 firewall."
+    exit 1
+}
+
+failed_to_start()
+{
+    echo "FAIL."
+    exit 1
+}
+
+#
+# Function that starts the daemon/service
+#
+do_start()
+{
+    echo -n "Starting SmoothWall Express 3 : "
+    $SWE3_FW_UP && echo "Done." || failed_to_start
+
+    return 0
+}
+
+#
+# Function that stops the daemon/service
+#
+do_stop()
+{
+    echo -n "Stopping SmoothWall Express 3 : "
+    $SWE3_FW_DOWN && echo "Done." || failed_to_start
+
+    return 0
+}
+
+#
+# Function that sends a SIGHUP to the daemon/service
+#
+do_reload() {
+	#
+	# If the daemon can reload its configuration without
+	# restarting (for example, when it is sent a SIGHUP),
+	# then implement that here.
+	#
+	start-stop-daemon --stop --signal 1 --quiet --pidfile $PIDFILE --name $NAME
+	return 0
+}
+
+case "$1" in
+  start)
+	do_start
+	;;
+  stop)
+	do_stop
+	;;
+  restart|force-reload)
+	do_stop
+	case "$?" in
+	  0|1)
+		do_start
+		esac
+	esac
+	;;
+  *)
+	echo "Usage: /etc/init.d/swe3 {start|stop|restart|force-reload}" >&2
+	exit 3
+	;;
+esac
+
+exit 0
