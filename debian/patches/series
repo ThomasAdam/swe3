@@ -8,3 +8,4 @@ debian-services
 debian-no-updates
 configwriter
 configwriter-smoothd-message
+rc-firewall-down-sane

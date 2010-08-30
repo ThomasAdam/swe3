@@ -1,0 +1,15 @@
+--- a/etc/rc.d/rc.firewall.down
++++ b/etc/rc.d/rc.firewall.down
+@@ -3,9 +3,9 @@
+ /sbin/iptables -F
+ /sbin/iptables -X
+ 
+-/sbin/iptables -P INPUT DROP
+-/sbin/iptables -P FORWARD DROP
+-/sbin/iptables -P OUTPUT DROP
++/sbin/iptables -P INPUT ACCEPT
++/sbin/iptables -P FORWARD ACCEPT
++/sbin/iptables -P OUTPUT ACCEPT
+ 
+ /sbin/iptables -A INPUT -j LOG
+ /sbin/iptables -A FORWARD -j LOG
