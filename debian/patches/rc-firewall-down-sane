@@ -1,6 +1,10 @@
 --- a/etc/rc.d/rc.firewall.down
 +++ b/etc/rc.d/rc.firewall.down
-@@ -3,9 +3,9 @@
+@@ -1,11 +1,13 @@
+ #!/bin/sh
+ 
++set -e
++
  /sbin/iptables -F
  /sbin/iptables -X
  

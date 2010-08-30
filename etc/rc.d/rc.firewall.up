@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -e
+
 # Disable ICMP Redirect Acceptance
 for FILE in /proc/sys/net/ipv4/conf/*/accept_redirects; do
 	echo 0 > $FILE
